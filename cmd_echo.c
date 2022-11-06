@@ -1,3 +1,6 @@
-// #include "minishell.h"
+#include "minishell.h"
 
-// void cmd_echo()
+void cmd_echo()
+{
+	
+}

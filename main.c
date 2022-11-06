@@ -25,16 +25,22 @@ void ignore_signals()
     signal(SIGQUIT, SIG_IGN);
 }
 
-
 int main()
 {
 	char *line;
 	int i  = 0; 
-	ignore_signals();
-	while (i < 3)
+	int fd = open("./dup.txt", O_CREAT);
+	if(fd < 0)
+        printf("Error: File not found\n");
+	// dup(fd);
+	// ignore_signals();
+	dup2(fd, 1);
+	while (i < 2)
 	{
 		line = readline("Line :");
-		printf("%s ", line);
+		// printf("%s \n", line);
+		write(fd, line, ft_strlen(line));
+		++i;
 	}
 	return (0);
 }
